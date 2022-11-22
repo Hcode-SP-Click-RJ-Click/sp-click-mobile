@@ -1,41 +1,20 @@
 import styled from '@emotion/native';
 import { StatusBar } from 'expo-status-bar';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { PlaceItem } from './src/components/PlaceItem';
 
 const Container = styled.View`
   flex: 1;
-  background-color: #fff;
+  background-color: #000;
   align-items: center;
   justify-content: center;
+  padding: 0 20px;
 `;
 
 const Title = styled.Text`
   font-size: 25px;
   font-weight: bold;
   text-transform: uppercase;
-`;
-
-const PlaceContainer = styled.View`
-  border-color: blue;
-  border-width: 1px;
-  border-style: solid;
-  height: 200px,
-  width: 100%;
-`;
-
-const PlaceImage = styled.ImageBackground`
-  height: 200px;
-  justify-content: flex-end;
-  padding-left: 15px;
-  padding-bottom: 15px;
-`;
-
-const PlaceTitle = styled.Text`
-  font-size: 24px;
-  color: #fff;
-`;
-
-const PlaceSubTitle = styled.Text`
   color: #fff;
 `;
 
@@ -43,12 +22,26 @@ export default function App() {
   return (
     <Container>
       <Title>Descubra lugares incríveis!</Title>
-      <PlaceContainer>
-        <PlaceImage source={require('./assets/maracana.jpg')}>
-          <PlaceTitle>Maracanã</PlaceTitle>
-          <PlaceSubTitle>Um dos estádios mais famosos do mundo.</PlaceSubTitle>
+
+      <PlaceItem />
+
+      <PlaceItem />
+
+      <PlaceItem />
+
+      {/* <PlaceContainer>
+        <PlaceImage source={require('./assets/estacao-luz.jpg')}>
+          <PlaceTitle>Estação da Luz</PlaceTitle>
+          <PlaceSubTitle>Um dos cartões postais mais antigos de São Paulo</PlaceSubTitle>
         </PlaceImage>
       </PlaceContainer>
+
+      <PlaceContainer>
+        <PlaceImage source={require('./assets/masp.jpg')}>
+          <PlaceTitle>MASP</PlaceTitle>
+          <PlaceSubTitle>Um prato cheio para os amantes da Arte Moderna</PlaceSubTitle>
+        </PlaceImage>
+      </PlaceContainer> */}
       <StatusBar style="auto" />
     </Container>
   );
