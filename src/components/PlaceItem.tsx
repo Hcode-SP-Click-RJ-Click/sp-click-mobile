@@ -22,15 +22,21 @@ const PlaceSubTitle = styled.Text`
   color: #fff;
 `;
 
-export const PlaceItem = () => {
+type PlaceItemProps = {
+    name: string;
+    image: any;
+    description: string;
+};
+
+export const PlaceItem = (props: PlaceItemProps) => {
 
     return (
         <PlaceContainer>
-            <PlaceImage source={require('../assets/zoologico.jpg')} imageStyle={{
-            borderRadius: 10,
+            <PlaceImage source={props.image} imageStyle={{
+                borderRadius: 10,
             }}>
-            <PlaceTitle>Zoológico de São Paulo</PlaceTitle>
-            <PlaceSubTitle>Uma aventura animal!</PlaceSubTitle>
+                <PlaceTitle>{props.name}</PlaceTitle>
+                <PlaceSubTitle>{props.description}</PlaceSubTitle>
             </PlaceImage>
         </PlaceContainer>
     );

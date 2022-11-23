@@ -1,49 +1,43 @@
 import styled from '@emotion/native';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 import { PlaceItem } from './src/components/PlaceItem';
+import { HomeScreen } from './src/screens/HomeScreen';
+import { TripScreen } from './src/screens/TripScreen';
 
-const Container = styled.View`
-  flex: 1;
-  background-color: #000;
-  align-items: center;
-  justify-content: center;
-  padding: 0 20px;
-`;
-
-const Title = styled.Text`
-  font-size: 25px;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: #fff;
-`;
+const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
   return (
-    <Container>
-      <Title>Descubra lugares incríveis!</Title>
-
-      <PlaceItem />
-
-      <PlaceItem />
-
-      <PlaceItem />
-
-      {/* <PlaceContainer>
-        <PlaceImage source={require('./assets/estacao-luz.jpg')}>
-          <PlaceTitle>Estação da Luz</PlaceTitle>
-          <PlaceSubTitle>Um dos cartões postais mais antigos de São Paulo</PlaceSubTitle>
-        </PlaceImage>
-      </PlaceContainer>
-
-      <PlaceContainer>
-        <PlaceImage source={require('./assets/masp.jpg')}>
-          <PlaceTitle>MASP</PlaceTitle>
-          <PlaceSubTitle>Um prato cheio para os amantes da Arte Moderna</PlaceSubTitle>
-        </PlaceImage>
-      </PlaceContainer> */}
-      <StatusBar style="auto" />
-    </Container>
+    <NavigationContainer>
+      <Tab.Navigator
+        activeColor='#002FF7'
+        inactiveColor='#fff'
+        barStyle={{
+          backgroundColor: '#111111',
+        }}
+        sceneAnimationEnabled={true}
+      >
+        <Tab.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            tabBarIcon: 'home',
+            title: '',
+          }}
+        />
+        <Tab.Screen
+          name="Trips"
+          component={TripScreen}
+          options={{
+            tabBarIcon: 'bag-suitcase',
+            title: '',
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
