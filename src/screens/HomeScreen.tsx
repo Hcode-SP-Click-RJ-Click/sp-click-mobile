@@ -7,14 +7,19 @@ const Container = styled.View`
   background-color: #000;
   align-items: center;
   justify-content: center;
-  padding: 0 20px;
 `;
 
 const Title = styled.Text`
-  font-size: 25px;
+  font-size: 22px;
   font-weight: bold;
   text-transform: uppercase;
   color: #fff;
+  margin-top: 45px;
+`;
+
+const PlaceContainer = styled.View`
+    padding: 0 20px;
+    width: 100%;
 `;
 
 export const HomeScreen = () => {
@@ -25,23 +30,25 @@ export const HomeScreen = () => {
 
             <Title>Descubra lugares incríveis!</Title>
 
-            <PlaceItem
-                name="Zoológico de São Paulo"
-                image={require("./../assets/zoologico.jpg")}
-                description="Uma aventura animal!"
-            />
+            <PlaceContainer>
+                <PlaceItem
+                    name="Zoológico de São Paulo"
+                    image={require("./../assets/zoologico.jpg")}
+                    description="Uma aventura animal!"
+                />
 
-            <PlaceItem
-                name="Estação da Luz"
-                image={require("./../assets/estacao-luz.jpg")}
-                description="Um dos cartões postais mais antigos de São Paulo"
-            />
+                <PlaceItem
+                    name="Estação da Luz"
+                    image={require("./../assets/estacao-luz.jpg")}
+                    description="Um dos cartões postais mais antigos de São Paulo"
+                />
 
-            <PlaceItem
-                name="MASP"
-                image={require("./../assets/masp.jpg")}
-                description="Um prato cheio para os amantes da Arte Moderna"
-            />
+                <PlaceItem
+                    name="MASP"
+                    image={require("./../assets/masp.jpg")}
+                    description="Um prato cheio para os amantes da Arte Moderna"
+                />
+            </PlaceContainer>            
         </Container>
     );
 
