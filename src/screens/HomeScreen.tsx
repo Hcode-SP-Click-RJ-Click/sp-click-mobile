@@ -1,6 +1,6 @@
 import styled from "@emotion/native";
 import { StatusBar } from "expo-status-bar";
-import { PlaceItem } from "../components/PlaceItem";
+import { PlaceList } from "../components/PlaceList";
 
 const Container = styled.View`
   flex: 1;
@@ -17,11 +17,6 @@ const Title = styled.Text`
   margin-top: 45px;
 `;
 
-const PlaceContainer = styled.View`
-    padding: 0 20px;
-    width: 100%;
-`;
-
 export const HomeScreen = () => {
 
     return (
@@ -30,25 +25,9 @@ export const HomeScreen = () => {
 
             <Title>Descubra lugares incríveis!</Title>
 
-            <PlaceContainer>
-                <PlaceItem
-                    name="Zoológico de São Paulo"
-                    image={require("./../assets/zoologico.jpg")}
-                    description="Uma aventura animal!"
-                />
+            
 
-                <PlaceItem
-                    name="Estação da Luz"
-                    image={require("./../assets/estacao-luz.jpg")}
-                    description="Um dos cartões postais mais antigos de São Paulo"
-                />
-
-                <PlaceItem
-                    name="MASP"
-                    image={require("./../assets/masp.jpg")}
-                    description="Um prato cheio para os amantes da Arte Moderna"
-                />
-            </PlaceContainer>            
+            <PlaceList />
         </Container>
     );
 

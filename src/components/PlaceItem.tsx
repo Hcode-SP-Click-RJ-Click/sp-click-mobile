@@ -1,7 +1,9 @@
+import { useState, useEffect } from "react";
 import styled from "@emotion/native";
 import { LinearGradient } from "expo-linear-gradient";
 import FavoriteOutlineIcon from "../icons/FavoriteOutlineIcon";
 import { StarIcon } from "../icons/StarIcon";
+import { PlaceType } from "../types/PlaceType";
 
 const PlaceContainer = styled.View`
   height: 200px;
@@ -50,43 +52,56 @@ const Buttons = styled.View`
   position: absolute;
   right: 10px;
   top: 10px;
+  flex-direction: row;
 `;
 
-const Button = styled.View`
+const Button = styled.TouchableOpacity`
   width: 36px;
   height: 36px;
-  border-radius: 50%;
+  border-radius: 18px;
   background-color: #FFFFFF99;
   align-items: center;
   justify-content: center;
+  margin-left: 10px;
 `;
 
 type PlaceItemProps = {
-    name: string;
-    image: any;
-    description: string;
+  data: PlaceType;
 };
 
-export const PlaceItem = (props: PlaceItemProps) => {
+export const PlaceItem = ({ data }: PlaceItemProps) => {
+
+  const [item, setItem] = useState(data);
+
+  useEffect(() => {
+    setItem(data);
+  }, [data]);
 
   return (
     <PlaceContainer>
-      <PlaceImage source={props.image} imageStyle={{
-        borderRadius: 10,
-      }}>
+      <PlaceImage
+        source={{
+          uri: item.image,
+        }}
+        imageStyle={{
+          borderRadius: 10,
+        }}
+      >
         <ImageOverlay
           colors={['#00000000', '#00000090']}
           start={{ x: 0, y: 0.4 }}
           end={{ x: 0, y: 0.8 }}
         />
-        <PlaceTitle>{props.name}</PlaceTitle>
-        <PlaceSubTitle>{props.description}</PlaceSubTitle>
+        <PlaceTitle>{item.title}</PlaceTitle>
+        <PlaceSubTitle>{item.subtitle}</PlaceSubTitle>
         <PlaceRating>
           <StarIcon />
-          <PlaceRatingValue>5.0</PlaceRatingValue>
+          <PlaceRatingValue>{item.rating.toPrecision(2)}</PlaceRatingValue>
         </PlaceRating>
         <Buttons>
-          <Button>
+          <Button
+            onPress={() => console.log("Favoritar este lugar.")}
+          >
             <FavoriteOutlineIcon />
           </Button>
         </Buttons>
