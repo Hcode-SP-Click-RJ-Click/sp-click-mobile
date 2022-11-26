@@ -8,8 +8,7 @@ type CategoriesListProps = {
 };
 
 const Container = styled.ScrollView`
-    padding-top: 10px;
-    padding-left: 20px;    
+    padding: 10px 0 0 20px;
 `;
 
 const Bar = styled.View`
