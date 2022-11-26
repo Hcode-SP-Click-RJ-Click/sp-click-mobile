@@ -4,4 +4,5 @@ export type PlaceType = {
     subtitle: string;
     image: string;
     rating: number;
+    categories: number[];
 };

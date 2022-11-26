@@ -1,6 +1,9 @@
 import styled from "@emotion/native";
 import { StatusBar } from "expo-status-bar";
+import { CategoriesList } from "../components/CategoriesList";
 import { PlaceList } from "../components/PlaceList";
+import { useState } from "react";
+import { CategoryType } from "../types/CategoryType";
 
 const Container = styled.View`
   flex: 1;
@@ -17,18 +20,30 @@ const Title = styled.Text`
   margin-top: 45px;
 `;
 
+const CategoriesContainer = styled.View`
+  height: 60px;
+`;
+
 export const HomeScreen = () => {
 
-    return (
-        <Container>
-            <StatusBar style="light" />
+  const [selectedCategory, setSelectedCategory] = useState<CategoryType | null>(null);
 
-            <Title>Descubra lugares incríveis!</Title>
+  return (
+    <Container>
+      <StatusBar style="light" />
 
-            
+      <Title>Descubra lugares incríveis!</Title>
 
-            <PlaceList />
-        </Container>
-    );
+      <CategoriesContainer>
+        <CategoriesList
+          onChange={(category) => setSelectedCategory(category)}
+        />
+      </CategoriesContainer>
+
+      <PlaceList
+        selectedCategory={selectedCategory}
+      />
+    </Container>
+  );
 
 };
