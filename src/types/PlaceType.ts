@@ -5,4 +5,6 @@ export type PlaceType = {
     image: string;
     rating: number;
     categories: number[];
+    address: string;
+    description: string;
 };
