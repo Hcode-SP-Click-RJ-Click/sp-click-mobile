@@ -4,7 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import FavoriteOutlineIcon from "../icons/FavoriteOutlineIcon";
 import { StarIcon } from "../icons/StarIcon";
 import { PlaceType } from "../types/PlaceType";
-import { usePlace } from "../providers/PlaceProvider";
+import { usePlace } from "../contexts/PlaceContext";
 
 const PlaceContainer = styled.TouchableOpacity`
   height: 200px;
@@ -84,7 +84,7 @@ export const PlaceItem = ({ data }: PlaceItemProps) => {
   return (
     <PlaceContainer
       onPress={() => {
-        showPlace();
+        showPlace(item.id);
       }}
     >
       <PlaceImage
